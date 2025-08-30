@@ -1,59 +1,134 @@
 # AfricPay
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.0.2.
+A modern Angular application for managing payments with a clean, responsive UI and internationalization support.
 
-## Development server
+## 📋 Prerequisites
 
-To start a local development server, run:
+- Node.js (v18 or later)
+- npm (v9 or later) or Yarn (v1.22 or later)
+- Angular CLI (v20 or later)
+- Git (for version control)
 
-```bash
-ng serve
-```
+## 🚀 Quick Start
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+### 1. Clone the Repository
 
 ```bash
-ng generate component component-name
+git clone https://github.com/cyprian-nziim/afric-pay.git
+cd afric-pay
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+### 2. Install Dependencies
+
+Using npm:
 
 ```bash
-ng generate --help
+npm install
 ```
 
-## Building
-
-To build the project run:
+Or using Yarn:
 
 ```bash
-ng build
+yarn install
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+### 3. Configure Environment
 
-## Running unit tests
+Copy the environment example file and update with your configuration:
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+```bash
+cp src/environments/environment.example.ts src/environments/environment.ts
+```
+
+Edit the `environment.ts` file with your specific configuration.
+
+## 🛠 Development
+
+### Start Development Server
+
+```bash
+ng serve --open
+```
+
+Open your browser and navigate to `http://localhost:4200/`. The app will automatically reload if you change any source files.
+
+### Build for Production
+
+```bash
+npm run launch
+```
+
+The build artifacts will be stored in the `dist/afric-pay` directory.
+
+## 🐳 Docker Support
+
+### Development with Hot Reload
+
+```bash
+docker-compose up app-dev
+```
+
+### Production Build
+
+```bash
+docker-compose up app-prod
+```
+
+Access the production build at `http://localhost:80`
+
+## 🧪 Testing
+
+### Unit Tests
 
 ```bash
 ng test
 ```
 
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
+### End-to-End Tests
 
 ```bash
 ng e2e
 ```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+## 🧩 Development Tools
 
-## Additional Resources
+### Generate Components
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+Generate a new component:
+
+```bash
+ng generate component component-name
+```
+
+### Available Schematics
+
+To see all available schematics:
+
+```bash
+ng generate --help
+```
+
+## 🌍 Internationalization (i18n)
+
+The application supports multiple languages. To add a new language:
+
+1. Add translation files in `src/assets/i18n/`
+2. Update the language configuration in the application
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 📚 Resources
+
+- [Angular Documentation](https://angular.io/docs)
+- [Angular CLI Overview](https://angular.dev/tools/cli)
+- [Angular Style Guide](https://angular.io/guide/styleguide)

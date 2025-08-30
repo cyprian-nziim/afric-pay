@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+  # Development environment with hot-reload
+  app-dev:
+    build:
+      context: .
+      target: development
+    ports:
+      - "4200:4200"
+    volumes:
+      - .:/app
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development
+    command: npm start -- --host 0.0.0.0 --disable-host-check
+
+  # Production build
+  app-prod:
+    build:
+      context: .
+      target: production
+    ports:
+      - "80:80"
+    environment:
+      - NODE_ENV=production
+    restart: unless-stopped
+
+  # CI service for running tests
+  ci:
+    build:
+      context: .
+      target: ci
+    environment:
+      - NODE_ENV=test
+    command: npm test -- --watch=false --browsers=ChromeHeadless --code-coverage
