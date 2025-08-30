@@ -4,6 +4,46 @@
     "transactions": "Transactions"
   },
   "language_placeholder": "Select a language",
+  "dashboard": {
+    "title": "My Accounts",
+    "noAccounts": "No accounts found",
+    "quickActions": {
+      "title": "Quick Actions",
+      "sendMoney": "Send Money",
+      "buyAirtime": "Buy Airtime",
+      "buyData": "Buy Data"
+    },
+    "loading": "Loading accounts...",
+    "error": "Failed to load accounts. Please try again later."
+  },
+  "services": {
+    "send-money": {
+      "backButton": "Back",
+      "title": "Send Money",
+      "description": "Transfer money to any bank account in Africa",
+      "form": {
+        "fromAccount": "From Account",
+        "recipientAccount": "Recipient Account Number",
+        "recipientPlaceholder": "Enter recipient's account number",
+        "amount": "Amount",
+        "amountPlaceholder": "0.00",
+        "message": "Message (Optional)",
+        "messagePlaceholder": "Add a note"
+      },
+      "currency": "XAF",
+      "buttons": {
+        "sending": "Sending...",
+        "sendMoney": "Send Money"
+      },
+      "errors": {
+        "insufficientFunds": "Insufficient funds",
+        "invalidAmount": "Please enter a valid amount",
+        "invalidAccount": "Please enter a valid account number",
+        "transactionFailed": "Failed to send money. Please try again.",
+        "validationError": "Please fill in all required fields with valid values"
+      }
+    }
+  },
   "login": {
     "title": "Login",
     "form": {
@@ -45,18 +85,6 @@
       "subtitle": "Set up passwordless login for enhanced security. We'll use your email to find or create your passkey.",
       "emailPlaceholder": "your@email.com",
       "createButton": "Continue with Passkey"
-    }
-  },
-  "dashboard": {
-    "title": "My Accounts",
-    "noAccounts": "No accounts found",
-    "loading": "Loading accounts...",
-    "error": "Failed to load accounts. Please try again later.",
-    "quickActions": {
-      "title": "Quick Actions",
-      "sendMoney": "Send Money",
-      "buyAirtime": "Buy Airtime",
-      "buyData": "Buy Data"
     }
   },
   "not_found": {

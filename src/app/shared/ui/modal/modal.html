@@ -3,15 +3,15 @@
   [ngClass]="{ 'modal-open': isOpen(), 'modal-bottom': !isCentered() }"
 >
   <div
-    class="modal-box flex flex-col size-auto w-auto lg:max-w-[512px] mx-auto right-0 left-0 p-0 bg-white dark:bg-base-200 relative"
+    class="modal-box flex flex-col size-auto w-auto md:max-w-auto mx-auto right-0 left-0 p-0 bg-white dark:bg-base-200 relative"
     [ngClass]="{
       'w-screen max-h-screen h-full md:!h-auto rounded-none':
         isFullScreen() && !isCentered(),
       '!max-w-11/12 max-h-[80vh] overflow-y-auto !rounded-box !mx-3':
         isCentered() && !isFullScreen(),
-      '!w-screen !max-h-screen h-full md:!h-auto !rounded-none lg:!max-w-11/12 lg:!max-h-[90vh] md:!rounded-box':
+      '!w-screen !max-h-screen h-full md:!h-auto !rounded-none lg:!max-w-fit lg:!max-h-[90vh] md:!rounded-box':
         isCentered() && isFullScreen(),
-      'lg:!min-h-[80vh]': enforceHeight(),
+      '!w-fit lg:!min-h-[80vh]': enforceHeight(),
     }"
   >
     <ng-content></ng-content>

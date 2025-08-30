@@ -4,6 +4,46 @@
     "transactions": "Transactions"
   },
   "language_placeholder": "Sélectionnez une langue",
+  "dashboard": {
+    "title": "Mes Comptes",
+    "noAccounts": "Aucun compte trouvé",
+    "quickActions": {
+      "title": "Actions Rapides",
+      "sendMoney": "Envoyer de l'argent",
+      "buyAirtime": "Acheter du crédit",
+      "buyData": "Acheter des données"
+    },
+    "loading": "Chargement des comptes...",
+    "error": "Échec du chargement des comptes. Veuillez réessayer plus tard."
+  },
+  "services": {
+    "send-money": {
+      "backButton": "Retour",
+      "title": "Envoyer de l'argent",
+      "description": "Transférez de l'argent vers n'importe quel compte bancaire en Afrique",
+      "form": {
+        "fromAccount": "Depuis le compte",
+        "recipientAccount": "Numéro de compte du bénéficiaire",
+        "recipientPlaceholder": "Entrez le numéro de compte du bénéficiaire",
+        "amount": "Montant",
+        "amountPlaceholder": "0,00",
+        "message": "Message (Optionnel)",
+        "messagePlaceholder": "Ajouter une note"
+      },
+      "currency": "XAF",
+      "buttons": {
+        "sending": "Envoi en cours...",
+        "sendMoney": "Envoyer de l'argent"
+      },
+      "errors": {
+        "insufficientFunds": "Fonds insuffisants",
+        "invalidAmount": "Veuillez entrer un montant valide",
+        "invalidAccount": "Veuillez entrer un numéro de compte valide",
+        "transactionFailed": "Échec de l'envoi d'argent. Veuillez réessayer.",
+        "validationError": "Veuillez remplir tous les champs obligatoires avec des valeurs valides"
+      }
+    }
+  },
   "login": {
     "title": "Connexion",
     "form": {
@@ -45,18 +85,6 @@
       "subtitle": "Configurez une connexion sans mot de passe pour une sécurité renforcée. Nous utiliserons votre email pour trouver ou créer votre clé d'accès.",
       "emailPlaceholder": "votre@email.com",
       "createButton": "Continuer avec la clé d'accès"
-    }
-  },
-  "dashboard": {
-    "title": "Mes Comptes",
-    "noAccounts": "Aucun compte trouvé",
-    "loading": "Chargement des comptes...",
-    "error": "Échec du chargement des comptes. Veuillez réessayer plus tard.",
-    "quickActions": {
-      "title": "Actions Rapides",
-      "sendMoney": "Envoyer de l'argent",
-      "buyAirtime": "Acheter du crédit",
-      "buyData": "Acheter des données"
     }
   },
   "not_found": {

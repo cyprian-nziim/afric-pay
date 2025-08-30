@@ -1,9 +1,10 @@
-import { Component, OnInit, inject, signal } from '@angular/core';
+import { Component, inject, signal, computed } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { TransactionListItem } from '../../ui/transaction-list-item/transaction-list-item';
-import { Transaction } from '../../models/transaction.model';
+import { Transaction, TransactionStatus } from '../../models/transaction.model';
 import { TransactionsService } from '../../../core/services/transactions.service';
+import { catchError, of } from 'rxjs';
 
 @Component({
   selector: 'afric-transactions-list',
@@ -12,33 +13,72 @@ import { TransactionsService } from '../../../core/services/transactions.service
   templateUrl: './list.page.html',
   styleUrl: './list.page.css',
 })
-export class ListPage implements OnInit {
+export class ListPage {
+  // Inject services
   private transactionsService = inject(TransactionsService);
+  
+  // State
   transactions = signal<Transaction[]>([]);
   isLoading = signal(true);
   error = signal<string | null>(null);
-
-  ngOnInit() {
+  
+  // Computed values
+  sortedTransactions = computed(() => {
+    return [...this.transactions()].sort((a, b) => 
+      new Date(b.timestamp || b.date).getTime() - new Date(a.timestamp || a.date).getTime()
+    );
+  });
+  
+  groupedTransactions = computed(() => {
+    const groups: { [key: string]: Transaction[] } = {};
+    
+    this.sortedTransactions().forEach(transaction => {
+      const date = new Date(transaction.timestamp || transaction.date);
+      const dateStr = date.toLocaleDateString('en-US', { 
+        year: 'numeric', 
+        month: 'long', 
+        day: 'numeric' 
+      });
+      
+      if (!groups[dateStr]) {
+        groups[dateStr] = [];
+      }
+      
+      groups[dateStr].push(transaction);
+    });
+    
+    return Object.entries(groups).map(([date, transactions]) => ({
+      date,
+      transactions
+    }));
+  });
+  
+  constructor() {
+    // Load transactions when component initializes
     this.loadTransactions();
   }
-
+  
+  // Load transactions from the service
   loadTransactions() {
     this.isLoading.set(true);
     this.error.set(null);
-
-    this.transactionsService.getTransactions().subscribe({
-      next: (transactions) => {
+    
+    this.transactionsService.getTransactions()
+      .pipe(
+        catchError(error => {
+          console.error('Error loading transactions:', error);
+          this.error.set('Failed to load transactions. Please try again.');
+          return of([]);
+        })
+      )
+      .subscribe(transactions => {
         this.transactions.set(transactions);
         this.isLoading.set(false);
-      },
-      error: (error) => {
-        console.error('Failed to load transactions', error);
-        this.error.set(
-          error.message ||
-            'Failed to load transactions. Please try again later.',
-        );
-        this.isLoading.set(false);
-      },
-    });
+      });
+  }
+  
+  // Retry loading transactions
+  retry() {
+    this.loadTransactions();
   }
 }

@@ -1,0 +1,173 @@
+<ng-container *transloco="let t; prefix: 'services.send-money'">
+  <form (ngSubmit)="onSubmit()" class="flex flex-col gap-2">
+    <afric-modal
+      id="send-money-modal"
+      [isCentered]="true"
+      [isFullScreen]="true"
+      [isDismissible]="true"
+    >
+      <!-- header -->
+      <div
+        class="sticky top-0 border-base-200 dark:border-neutral-700 z-50 pb-2 md:px-2 bg-neutral-100 dark:bg-base-300 shadow shadow-neutral-200 border-b border-b-neutral-200 dark:border-b-neutral-800 dark:shadow-neutral-800"
+      >
+        <div class="flex justify-between items-center mb-2 w-full px-2 pt-2">
+          <button
+            (click)="handleCloseModal()"
+            class="btn btn-sm btn-ghost rounded-full"
+          >
+            <i class="fa-light fa-arrow-left text-xl"></i>
+            <span class="text-base mt-1">{{ t("backButton") }}</span>
+          </button>
+
+          <button
+            (click)="handleCloseModal()"
+            class="btn btn-sm btn-ghost btn-circle"
+          >
+            <i class="fa-light fa-xmark text-xl"></i>
+          </button>
+        </div>
+        <div class="w-full px-4 py-2 mx-auto">
+          <h2 class="text-2xl font-semibold text-center w-full mb-1">
+            {{ t("title") }}
+          </h2>
+          <p class="text-sm text-center text-neutral-500 dark:text-neutral-400">
+            {{ t("description") }}
+          </p>
+        </div>
+      </div>
+      <!-- end header -->
+
+      <!-- main content area -->
+      <div
+        class="w-full h-full md:max-w-sm mx-auto max-h-[calc(100vh-160px)] px-4 md:px-2 mt-1 mb-4 overflow-y-auto"
+      >
+        <!-- Error Message -->
+        @if (error()) {
+          <div class="alert alert-error">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="stroke-current shrink-0 h-6 w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
+              />
+            </svg>
+            <span>{{ error() }}</span>
+          </div>
+        }
+
+        <!-- From Account Dropdown -->
+        <div class="form-control w-full">
+          <label class="label">
+            <span class="label-text">{{ t('form.fromAccount') }}</span>
+          </label>
+          @if (loading()) {
+            <div class="skeleton w-full h-12"></div>
+          } @else {
+            <select
+              class="select select-bordered w-full"
+              [ngModel]="selectedAccountId()"
+              (ngModelChange)="selectedAccountId.set($event)"
+              name="fromAccount"
+              required
+              [disabled]="submitting()"
+            >
+              @for (account of accounts(); track account.id) {
+                <option [value]="account.id">
+                  {{ account.type | titlecase }} -
+                  {{ formatCurrency(account.balance, account.currency) }}
+                </option>
+              }
+            </select>
+          }
+        </div>
+
+        <div class="divider my-0"></div>
+
+        <!-- Recipient Account Number -->
+        <div class="form-control w-full">
+          <label class="label">
+            <span class="label-text">{{ t('form.recipientAccount') }}</span>
+          </label>
+          <input
+            type="text"
+            [placeholder]="t('form.recipientPlaceholder')"
+            class="input input-bordered w-full"
+            [ngModel]="recipientAccountNumber()"
+            (ngModelChange)="recipientAccountNumber.set($event)"
+            name="recipientAccountNumber"
+            required
+            [disabled]="submitting()"
+          />
+        </div>
+
+        <!-- Amount -->
+        <div class="form-control w-full">
+          <label class="label">
+            <span class="label-text">{{ t('form.amount') }}</span>
+          </label>
+          <div class="relative">
+            <span class="absolute left-3 top-1/2 -translate-y-1/2">{{ t('currency') }}</span>
+            <input
+              type="number"
+              [placeholder]="t('form.amountPlaceholder')"
+              class="input input-bordered w-full pl-12"
+              [ngModel]="amount()"
+              (ngModelChange)="amount.set($event ? +$event : null)"
+              name="amount"
+              min="1"
+              step="1"
+              required
+              [disabled]="submitting()"
+            />
+          </div>
+        </div>
+
+        <!-- Message -->
+        <div class="form-control w-full">
+          <label class="label">
+            <span class="label-text">{{ t('form.message') }}</span>
+          </label>
+          <textarea
+            [placeholder]="t('form.messagePlaceholder')"
+            class="textarea textarea-bordered w-full"
+            [ngModel]="message()"
+            (ngModelChange)="message.set($event)"
+            name="message"
+            [disabled]="submitting()"
+          ></textarea>
+        </div>
+      </div>
+      <!-- end main content area -->
+
+      <!-- footer -->
+      <div
+        class="sticky-footer mt-1 card py-4 px-6 md:px-5 rounded-b-none rounded-t-3xl w-full z-50 gap-y-2 bg-neutral-100 dark:bg-base-300 border-t border-t-neutral-200 dark:border-t-neutral-800 shadow dark:shadow-neutral-800"
+      >
+        <button
+          type="submit"
+          class="btn btn-primary w-full"
+          [disabled]="
+            !selectedAccountId() ||
+            !recipientAccountNumber() ||
+            !amount() ||
+            submitting()
+          "
+        >
+          @if (submitting()) {
+            <span class="loading loading-spinner"></span>
+            {{ t('buttons.sending') }}
+          } @else {
+            {{ t('buttons.sendMoney') }}
+          }
+        </button>
+      </div>
+      <!-- end footer -->
+    </afric-modal>
+  </form>
+</ng-container>
