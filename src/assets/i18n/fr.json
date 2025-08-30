@@ -47,6 +47,18 @@
       "createButton": "Continuer avec la clé d'accès"
     }
   },
+  "dashboard": {
+    "title": "Mes Comptes",
+    "noAccounts": "Aucun compte trouvé",
+    "loading": "Chargement des comptes...",
+    "error": "Échec du chargement des comptes. Veuillez réessayer plus tard.",
+    "quickActions": {
+      "title": "Actions Rapides",
+      "sendMoney": "Envoyer de l'argent",
+      "buyAirtime": "Acheter du crédit",
+      "buyData": "Acheter des données"
+    }
+  },
   "not_found": {
     "title": "Page non trouvée",
     "message": "La page que vous recherchez n'existe pas ou a été déplacée.",

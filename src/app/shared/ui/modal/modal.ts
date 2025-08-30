@@ -11,7 +11,7 @@ import { CommonModule } from '@angular/common';
 import { ModalService } from '../../../core/services/modal.service';
 
 @Component({
-  selector: 'qwiko-modal',
+  selector: 'afric-modal',
   imports: [CommonModule],
   templateUrl: './modal.html',
   styleUrls: ['./modal.css'],

@@ -47,6 +47,18 @@
       "createButton": "Continue with Passkey"
     }
   },
+  "dashboard": {
+    "title": "My Accounts",
+    "noAccounts": "No accounts found",
+    "loading": "Loading accounts...",
+    "error": "Failed to load accounts. Please try again later.",
+    "quickActions": {
+      "title": "Quick Actions",
+      "sendMoney": "Send Money",
+      "buyAirtime": "Buy Airtime",
+      "buyData": "Buy Data"
+    }
+  },
   "not_found": {
     "title": "Page Not Found",
     "message": "The page you're looking for doesn't exist or has been moved.",

@@ -1,1 +1,39 @@
-<p>Account Card</p>
+<div
+  class="stats shadow bg-white dark:bg-base-200 rounded-box cursor-pointer hover:md:opacity-90 py-2 px-2 w-full"
+  (click)="toggleBalance()"
+>
+  <div class="stat p-2 md:p-4">
+    <div class="stat-figure dark:text-slate-300 text-primary hidden md:flex">
+      <i [ngClass]="getAccountIcon()"></i>
+    </div>
+    <div class="stat-title text-xs md:text-base dark:text-slate-300 mb-2">
+      {{ accountType }}
+      @if (account.currency) {
+        <span>({{ account.currency }})</span>
+      }
+    </div>
+
+    @if (!loading) {
+      <div
+        class="stat-value text-3xl md:text-4xl leading-none dark:text-slate-300 text-primary"
+      >
+        @if (showBalance) {
+          {{ formattedBalance }}
+        } @else {
+          ••••••••
+        }
+      </div>
+    }
+    @if (loading) {
+      <div class="flex justify-center">
+        <span class="loading loading-spinner w-5 md:w-9"></span>
+      </div>
+    }
+
+    @if (account.accountNumber) {
+      <div class="text-[0.6rem] text-slate-400 mt-1">
+        {{ account.accountNumber | accountNumber }}
+      </div>
+    }
+  </div>
+</div>

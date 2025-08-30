@@ -1,0 +1,53 @@
+<div
+  class="card bg-white dark:bg-base-200 shadow-sm hover:shadow-md transition-shadow mb-1"
+>
+  <div class="card-body p-0">
+    <a
+      [routerLink]="['/transactions/show', transaction()?.id]"
+      class="block hover:bg-base-200 dark:hover:bg-base-300 transition-colors duration-200"
+    >
+      <div
+        class="flex items-center justify-between p-4 border-b border-base-200"
+      >
+        <div class="flex-1 min-w-0">
+          <p class="text-sm font-medium text-gray-900 truncate dark:text-white">
+            {{ transaction()?.description }}
+          </p>
+          <div
+            class="flex items-center mt-1 text-sm text-gray-500 dark:text-gray-400"
+          >
+            <span>{{ transaction()?.date | date: "mediumDate" }}</span>
+            <span class="mx-2">•</span>
+            <span [ngClass]="statusColor">{{
+              transaction()?.status | titlecase
+            }}</span>
+          </div>
+        </div>
+        <div class="ml-4 flex items-center">
+          <span
+            class="text-base font-medium"
+            [ngClass]="{
+              'text-green-600': transaction()?.amount! > 0,
+              'text-red-600': transaction()?.amount! < 0,
+            }"
+          >
+            {{ transaction()?.amount! | number }} {{ transaction()?.currency }}
+          </span>
+          <svg
+            class="w-5 h-5 ml-2 text-gray-400"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M9 5l7 7-7 7"
+            ></path>
+          </svg>
+        </div>
+      </div>
+    </a>
+  </div>
+</div>
