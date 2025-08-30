@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AlertComponent } from './alert.component';
+import { ChangeLanguage } from './change-language';
 
-describe('AlertComponent', () => {
-  let component: AlertComponent;
-  let fixture: ComponentFixture<AlertComponent>;
+describe('ChangeLanguage', () => {
+  let component: ChangeLanguage;
+  let fixture: ComponentFixture<ChangeLanguage>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ AlertComponent ]
+      imports: [ChangeLanguage]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(AlertComponent);
+    fixture = TestBed.createComponent(ChangeLanguage);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

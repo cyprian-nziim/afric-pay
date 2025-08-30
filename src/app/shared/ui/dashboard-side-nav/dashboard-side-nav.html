@@ -1,0 +1,81 @@
+<ng-container *transloco="let t; prefix: 'nav'">
+  <aside
+    class="hidden md:flex md:flex-col bg-white dark:bg-base-100 px-4 h-screen border-r border-gray-300 dark:border-gray-700 shadow-sm z-50"
+    [ngClass]="sideNavIsOpen() ? '!w-64' : 'w-20'"
+  >
+    <div
+      class="flex items-center justify-between pt-3 pb-4"
+      [ngClass]="{ 'px-3': sideNavIsOpen() }"
+    >
+      @if (sideNavIsOpen()) {
+        <button
+          class="btn p-0 bg-transparent hover:bg-transparent h-fit border-0 w-32 shadow-none dark:hidden"
+        >
+          <img
+            class="w-full"
+            src="/assets/logo/africpay-hz-logo-dark.png"
+            alt=""
+          />
+        </button>
+        <button
+          class="btn p-0 bg-transparent hover:bg-transparent h-fit border-0 w-32 shadow-none hidden dark:!flex"
+        >
+          <img
+            class="w-full"
+            src="/assets/logo/africpay-hz-logo-light.png"
+            alt=""
+          />
+        </button>
+      } @else {
+        <button
+          class="btn p-0 bg-transparent hover:bg-transparent h-fit border-0 w-full shadow-none dark:hidden"
+        >
+          <img class="w-full" src="/assets/logo/afric-icon-dark.png" alt="" />
+        </button>
+        <button
+          class="btn p-0 bg-transparent hover:bg-transparent h-fit border-0 w-full shadow-none hidden dark:!flex"
+        >
+          <img class="w-full" src="/assets/logo/afric-icon-light.png" alt="" />
+        </button>
+      }
+    </div>
+    <div class="flex flex-col mt-4 py-4 gap-y-1">
+      <button
+        routerLink="/dashboard"
+        [routerLinkActiveOptions]="{ exact: true }"
+        routerLinkActive="!bg-primary text-white hover:!opacity-90"
+        class="px-3 py-1 flex gap-x-3 items-center hover:bg-gray-200 dark:hover:bg-gray-700 rounded-box"
+      >
+        @if (sideNavIsOpen()) {
+          <i class="fa-solid fa-house text-lg"></i>
+          <span class="mt-1 font-normal">{{ t("dashboard") }}</span>
+        } @else {
+          <div
+            class="flex-1 tooltip tooltip-right"
+            [attr.data-tip]="t('dashboard')"
+          >
+            <i class="fa-solid fa-house text-lg"></i>
+          </div>
+        }
+      </button>
+
+      <button
+        routerLink="/transactions"
+        routerLinkActive="!bg-primary text-white hover:!opacity-90"
+        class="px-3 py-2 flex gap-x-3 items-center hover:bg-gray-200 dark:hover:bg-gray-700 rounded-box"
+      >
+        @if (sideNavIsOpen()) {
+          <i class="fa-solid fa-exchange text-lg"></i>
+          <span class="mt-1 ml-1 font-normal">{{ t("transactions") }}</span>
+        } @else {
+          <div
+            class="flex-1 tooltip tooltip-right"
+            [attr.data-tip]="t('transactions')"
+          >
+            <i class="fa-solid fa-exchange text-xl"></i>
+          </div>
+        }
+      </button>
+    </div>
+  </aside>
+</ng-container>

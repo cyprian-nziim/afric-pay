@@ -36,7 +36,10 @@ export class LanguageService {
   }
 
   setAutoLanguage() {
-    if (this.appLanguage()) {
+    const appLanguage = localStorage.getItem('language');
+    if (appLanguage) {
+      const language = JSON.parse(appLanguage);
+      this.setAppLanguage(language, 'user');
       return;
     }
     const browserLanguage = navigator.language.split('-')[0];

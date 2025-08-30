@@ -1,4 +1,9 @@
-import { ApplicationConfig, provideBrowserGlobalErrorListeners, provideZonelessChangeDetection, isDevMode } from '@angular/core';
+import {
+  ApplicationConfig,
+  provideBrowserGlobalErrorListeners,
+  provideZonelessChangeDetection,
+  isDevMode,
+} from '@angular/core';
 import { provideRouter } from '@angular/router';
 
 import { routes } from './app.routes';
@@ -10,15 +15,24 @@ export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
     provideZonelessChangeDetection(),
-    provideRouter(routes), provideHttpClient(), provideTransloco({
-        config: { 
-          availableLangs: ['en', 'fr'],
-          defaultLang: 'en',
-          // Remove this option if your application doesn't support changing language in runtime.
-          reRenderOnLangChange: true,
-          prodMode: !isDevMode(),
+    provideRouter(routes),
+    provideHttpClient(),
+    provideTransloco({
+      config: {
+        availableLangs: ['en', 'fr'],
+        defaultLang: 'en',
+        fallbackLang: 'en',
+        // Remove this option if your application doesn't support changing language in runtime.
+        reRenderOnLangChange: true,
+        prodMode: !isDevMode(),
+        missingHandler: {
+          useFallbackTranslation: true,
         },
-        loader: TranslocoHttpLoader
-      })
-  ]
+        flatten: {
+          aot: !isDevMode(),
+        },
+      },
+      loader: TranslocoHttpLoader,
+    }),
+  ],
 };

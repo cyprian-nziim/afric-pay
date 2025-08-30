@@ -1,5 +1,6 @@
 import { inject, Injectable, signal } from '@angular/core';
 import { ThemeService } from './core/services/theme.service';
+import { LanguageService } from './core/services/language.service';
 
 @Injectable({
   providedIn: 'root',
@@ -7,9 +8,13 @@ import { ThemeService } from './core/services/theme.service';
 export class AppService {
   loading = signal<boolean>(false);
   themeService = inject(ThemeService);
-  constructor() {}
+  languageService = inject(LanguageService);
 
-  async initThemeService() {
-    await this.themeService.init();
+  async init() {
+    // Theme Initialization
+    this.themeService.init();
+
+    // Initialize Languages
+    await this.languageService.init();
   }
 }

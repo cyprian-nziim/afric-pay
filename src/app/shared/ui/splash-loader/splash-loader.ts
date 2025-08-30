@@ -1,16 +1,16 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject, effect, signal } from '@angular/core';
-import { AlertComponent } from '../alert/alert.component';
+import { AlertCard } from '../alert/alert';
 import { AppService } from '../../../app.service';
 import { Router } from '@angular/router';
 
 @Component({
   selector: 'afric-splash-loader',
-  imports: [CommonModule, AlertComponent],
-  templateUrl: './splash-loader.component.html',
-  styleUrl: './splash-loader.component.scss',
+  imports: [CommonModule, AlertCard],
+  templateUrl: './splash-loader.html',
+  styleUrl: './splash-loader.css',
 })
-export class SplashLoaderComponent {
+export class SplashLoader {
   private router = inject(Router);
   appService = inject(AppService);
   loading = signal<boolean>(true);

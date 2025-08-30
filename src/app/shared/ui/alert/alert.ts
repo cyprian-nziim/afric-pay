@@ -6,10 +6,10 @@ import { Alert, AlertMode } from '../../../core/models/alert';
 @Component({
   selector: 'afric-alert',
   imports: [CommonModule],
-  templateUrl: './alert.component.html',
-  styleUrl: './alert.component.scss',
+  templateUrl: './alert.html',
+  styleUrl: './alert.css',
 })
-export class AlertComponent implements OnDestroy {
+export class AlertCard implements OnDestroy {
   private alertService = inject(AlertService);
   // [x: string]: any;
   alert = model<Alert | null>(null);

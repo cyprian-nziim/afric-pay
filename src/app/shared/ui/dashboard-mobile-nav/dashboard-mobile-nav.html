@@ -1,0 +1,35 @@
+<ng-container *transloco="let t; prefix: 'nav'">
+  <div
+    class="mt-5 fixed bottom-0 right-0 left-0 md:mt-10 md:max-w-[750px] mx-auto w-full z-50 md:hidden"
+  >
+    <div
+      class="bg-white shadow-2xl shadow-black dark:shadow-2xl dark:shadow-stone-500 dark:bg-base-100 border-2 border-base-100 card marker:flex flex-row px-2 pt-2 pb-5 items-end rounded-b-none rounded-t-3xl w-full"
+    >
+      <div class="item flex flex-1 justify-center">
+        <button
+          routerLink="/dashboard"
+          class="p-0 flex flex-col gap-y-2 items-center rounded-box"
+        >
+          <i
+            routerLinkActive="bg-primary !text-white"
+            [routerLinkActiveOptions]="{ exact: true }"
+            class="px-5 py-1 rounded-box text-primary dark:text-white fa-solid fa-house text-xl"
+          ></i>
+          <span class="m-0 text-xs">{{ t("dashboard") }}</span>
+        </button>
+      </div>
+      <div class="item flex flex-1 justify-center">
+        <button
+          routerLink="transactions"
+          class="p-0 flex flex-col gap-y-2 items-center rounded-box"
+        >
+          <i
+            routerLinkActive="bg-primary !text-white"
+            class="px-5 py-1 rounded-box text-primary dark:text-white fa-solid fa-exchange text-xl"
+          ></i>
+          <span class="m-0 text-xs">{{ t("transactions") }}</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</ng-container>

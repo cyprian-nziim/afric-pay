@@ -1,29 +1,34 @@
 {
+  "nav": {
+    "dashboard": "Dashboard",
+    "transactions": "Transactions"
+  },
+  "language_placeholder": "Select a language",
   "login": {
     "title": "Login",
-    "subtitle": "Don't have a AficPay account?",
-    "create_account": "Create an Account",
-    "or": "OR",
     "form": {
       "email": {
-        "label": "Email",
         "placeholder": "Enter your email",
         "errors": {
           "required": "Email is required",
           "invalid": "Please enter a valid email"
-        }
+        },
+        "label": "Email"
       },
       "password": {
-        "label": "Password",
-        "placeholder": "Enter your password",
         "errors": {
           "required": "Password is required",
           "minlength": "Password must be at least 6 characters"
-        }
+        },
+        "label": "Password",
+        "placeholder": "Enter your password"
       },
-      "submit": "Sign In",
+      "submit": "Login",
       "forgot_password": "Forgot password?"
     },
+    "subtitle": "Don't have a AficPay account?",
+    "create_account": "Create an Account",
+    "or": "OR",
     "errors": {
       "invalid_credentials": "Invalid email or password",
       "generic": "Login failed. Please try again."
@@ -41,5 +46,10 @@
       "emailPlaceholder": "your@email.com",
       "createButton": "Continue with Passkey"
     }
+  },
+  "not_found": {
+    "title": "Page Not Found",
+    "message": "The page you're looking for doesn't exist or has been moved.",
+    "back_home": "Back to Home"
   }
 }

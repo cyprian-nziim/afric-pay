@@ -1,0 +1,16 @@
+<div class="h-screen flex overflow-hidden">
+  <afric-dashboard-side-nav
+    [(sideNavIsOpen)]="sideNavIsOpen"
+  ></afric-dashboard-side-nav>
+  <div class="flex-1">
+    <afric-dashboard-top-nav [(sideNavIsOpen)]="sideNavIsOpen">
+    </afric-dashboard-top-nav>
+    <main
+      class="h-svh max-w-6xl mx-auto overflow-y-auto pt-4 px-4 md:px-8 pb-40 md:pb-20"
+    >
+      <router-outlet></router-outlet>
+    </main>
+  </div>
+</div>
+
+<afric-dashboard-mobile-nav></afric-dashboard-mobile-nav>

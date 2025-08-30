@@ -1,0 +1,8 @@
+.modal:not(dialog:not(.modal-open)),
+.modal::backdrop {
+  background-color: #000000e8 !important;
+}
+
+.drawer-toggle:checked ~ .drawer-side > .drawer-overlay {
+  background-color: #000000e8 !important;
+}

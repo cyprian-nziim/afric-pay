@@ -3,7 +3,7 @@ import { EmailPasswordLogin } from '../../features/email-password-login/email-pa
 import { CommonModule } from '@angular/common';
 import { TranslocoModule } from '@jsverse/transloco';
 import { RouterModule } from '@angular/router';
-import { AlertComponent } from '../../../shared/ui/alert/alert.component';
+import { AlertCard } from '../../../shared/ui/alert/alert';
 
 @Component({
   selector: 'afric-login',
@@ -12,7 +12,7 @@ import { AlertComponent } from '../../../shared/ui/alert/alert.component';
     EmailPasswordLogin,
     TranslocoModule,
     RouterModule,
-    AlertComponent,
+    AlertCard,
   ],
   templateUrl: './login.page.html',
   styleUrl: './login.page.css',

@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SplashLoaderComponent } from './splash-loader.component';
+import { ShowPage } from './show.page';
 
-describe('SplashLoaderComponent', () => {
-  let component: SplashLoaderComponent;
-  let fixture: ComponentFixture<SplashLoaderComponent>;
+describe('ShowPage', () => {
+  let component: ShowPage;
+  let fixture: ComponentFixture<ShowPage>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [SplashLoaderComponent]
+      imports: [ShowPage]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(SplashLoaderComponent);
+    fixture = TestBed.createComponent(ShowPage);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

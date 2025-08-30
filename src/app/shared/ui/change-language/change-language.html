@@ -1,0 +1,17 @@
+<label
+  class="form-control w-24 flex flex-col gap-1 items-start bg-white dark:bg-base-200 rounded-box"
+>
+  <select
+    class="select select-bordered w-full rounded-box"
+    [ngModel]="currentLanguage | json"
+    (ngModelChange)="setLanguage($event)"
+    [disabled]="loading()"
+  >
+    <option disabled [selected]="!currentLanguage">
+      {{ "language_placeholder" | transloco }}
+    </option>
+    @for (language of getFilteredLanguages(); track $index) {
+      <option [value]="language | json">{{ language.name }}</option>
+    }
+  </select>
+</label>
