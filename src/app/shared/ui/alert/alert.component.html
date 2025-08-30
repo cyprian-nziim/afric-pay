@@ -1,0 +1,110 @@
+<div
+  role="alert"
+  class="alert !text-white text-sm p-2 flex justify-between items-center gap-2 my-2"
+  [ngClass]="{
+    'alert-success': alert()?.type == 'SUCCESS',
+    'alert-error': alert()?.type == 'ERROR',
+    'alert-warning': alert()?.type == 'WARNING',
+    'alert-info': alert()?.type == 'INFO',
+    '!text-success border border-success !bg-success/10':
+      alert()?.type == 'SUCCESS_OUTLINED',
+    ' !text-error border border-error !bg-error/10':
+      alert()?.type == 'ERROR_OUTLINED',
+    '!text-warning border border-warning  !bg-warning/10':
+      alert()?.type == 'WARNING_OUTLINED',
+    ' !text-info border border-info !bg-info/10':
+      alert()?.type == 'INFO_OUTLINED',
+    'my-4': margin(),
+    hidden: alert() == null,
+  }"
+>
+  <div
+    class="flex flex-row gap-2 items-center"
+    [ngClass]="{
+      '!text-success': alert()?.type == 'SUCCESS_OUTLINED',
+      ' !text-error': alert()?.type == 'ERROR_OUTLINED',
+      '!text-warning': alert()?.type == 'WARNING_OUTLINED',
+      ' !text-info': alert()?.type == 'INFO_OUTLINED',
+    }"
+  >
+    @if (alert()?.type == "SUCCESS" || alert()?.type == "SUCCESS_OUTLINED") {
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="h-6 w-6 shrink-0 stroke-current"
+        fill="none"
+        viewBox="0 0 24 24"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+        />
+      </svg>
+    } @else if (alert()?.type == "ERROR" || alert()?.type == "ERROR_OUTLINED") {
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="h-6 w-6 shrink-0 stroke-current"
+        fill="none"
+        viewBox="0 0 24 24"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
+        />
+      </svg>
+    } @else if (
+      alert()?.type == "WARNING" || alert()?.type == "WARNING_OUTLINED"
+    ) {
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="h-6 w-6 shrink-0 stroke-current"
+        fill="none"
+        viewBox="0 0 24 24"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
+        />
+      </svg>
+    } @else if (alert()?.type == "INFO" || alert()?.type == "INFO_OUTLINED") {
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        class="stroke-current h-6 w-6 shrink-0"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+        ></path>
+      </svg>
+    }
+    <span class="text-sm text-left">{{ alert()?.message }}</span>
+  </div>
+
+  @if (alert()?.mode == "DISMISSIBLE") {
+    <div>
+      <button
+        (click)="closeAlert()"
+        [ngClass]="{
+          ' !border-success hover:!bg-success':
+            alert()?.type == 'SUCCESS_OUTLINED',
+          ' !border-error hover:!bg-error': alert()?.type == 'ERROR_OUTLINED',
+          ' !border-warning hover:!bg-warning':
+            alert()?.type == 'WARNING_OUTLINED',
+          ' !border-info hover:!bg-info': alert()?.type == 'INFO_OUTLINED',
+        }"
+        class="btn bg-transparent btn-xs border-white text-white hover:bg-transparent hover:text-slate-200 hover:border-slate-200"
+      >
+        <i class="fa-solid text-sm fa-xmark"></i>
+      </button>
+    </div>
+  }
+</div>

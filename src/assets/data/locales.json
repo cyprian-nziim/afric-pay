@@ -1,0 +1,67 @@
+[
+	{
+		"id": "183",
+		"name": "Rwanda",
+		"code": "RW",
+		"phone_code": "+250",
+		"currency": "RWF",
+		"emoji": "🇷🇼",
+		"is_active": true,
+		"starts_with": "07",
+		"currency_name": "Rwandan franc",
+		"currency_symbol": "FRw",
+		"nationality": "Rwandan"
+	},
+	{
+		"id": "38",
+		"name": "Cameroon",
+		"code": "CM",
+		"phone_code": "+237",
+		"currency": "XAF",
+		"emoji": "🇨🇲",
+		"is_active": true,
+		"starts_with": "6",
+		"currency_name": "Central African CFA franc",
+		"currency_symbol": "FCFA",
+		"nationality": "Cameroonian"
+	},
+	{
+		"id": "220",
+		"name": "Togo",
+		"code": "TG",
+		"phone_code": "+228",
+		"currency": "XOF",
+		"emoji": "🇹🇬",
+		"is_active": true,
+		"starts_with": null,
+		"currency_name": "West African CFA franc",
+		"currency_symbol": "CFA",
+		"nationality": "Togolese"
+	},
+	{
+		"id": "83",
+		"name": "Ghana",
+		"code": "GH",
+		"phone_code": "+233",
+		"currency": "GHS",
+		"emoji": "🇬🇭",
+		"is_active": true,
+		"starts_with": null,
+		"currency_name": "Ghanaian cedi",
+		"currency_symbol": "GH₵",
+		"nationality": "Ghanaian"
+	},
+	{
+		"id": "229",
+		"name": "Uganda",
+		"code": "UG",
+		"phone_code": "+256",
+		"currency": "UGX",
+		"emoji": "🇺🇬",
+		"is_active": true,
+		"starts_with": null,
+		"currency_name": "Ugandan shilling",
+		"currency_symbol": "USh",
+		"nationality": "Ugandan"
+	}
+]

@@ -1,0 +1,45 @@
+{
+  "login": {
+    "title": "Login",
+    "subtitle": "Don't have a AficPay account?",
+    "create_account": "Create an Account",
+    "or": "OR",
+    "form": {
+      "email": {
+        "label": "Email",
+        "placeholder": "Enter your email",
+        "errors": {
+          "required": "Email is required",
+          "invalid": "Please enter a valid email"
+        }
+      },
+      "password": {
+        "label": "Password",
+        "placeholder": "Enter your password",
+        "errors": {
+          "required": "Password is required",
+          "minlength": "Password must be at least 6 characters"
+        }
+      },
+      "submit": "Sign In",
+      "forgot_password": "Forgot password?"
+    },
+    "errors": {
+      "invalid_credentials": "Invalid email or password",
+      "generic": "Login failed. Please try again."
+    }
+  },
+  "passkeysAuth": {
+    "login": {
+      "title": "Login with your passkey",
+      "subtitle": "Your device will ask for your Fingerprint, FaceID, or Screen Lock.",
+      "loginButton": "Continue with Passkey"
+    },
+    "create": {
+      "title": "Create a passkey",
+      "subtitle": "Set up passwordless login for enhanced security. We'll use your email to find or create your passkey.",
+      "emailPlaceholder": "your@email.com",
+      "createButton": "Continue with Passkey"
+    }
+  }
+}

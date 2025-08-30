@@ -1,0 +1,26 @@
+@if (loading()) {
+  <div
+    class="navbar absolute z-[1000] h-screen w-screen flex flex-col justify-center items-center bg-base-100 dark:bg-base-300"
+  >
+    <button
+      class="flex btn bg-transparent hover:bg-transparent w-100 h-fit border-0 md:w-48 shadow-none dark:hidden"
+    >
+      <img class="w-full" src="/assets/logo/africpay-hz-logo-dark.png" alt="" />
+    </button>
+    <button
+      class="btn bg-transparent hover:bg-transparent w-100 h-fit border-0 md:w-48 shadow-none hidden dark:!flex"
+    >
+      <img
+        class="w-full"
+        src="/assets/logo/africpay-hz-logo-light.png"
+        alt=""
+      />
+    </button>
+    <div class="max-w-sm mx-auto">
+      <afric-alert [margin]="true"></afric-alert>
+    </div>
+    <span
+      class="loading size-10 dark:text-white text-primary loading-spinner mt-4"
+    ></span>
+  </div>
+}

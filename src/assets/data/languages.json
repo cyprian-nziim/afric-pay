@@ -1,0 +1,30 @@
+[
+  {
+    "id": "bd4cb3f8-0ad7-46c1-9378-493385eed4ee",
+    "name": "English",
+    "native_name": "English",
+    "code": "en",
+    "is_active": true
+  },
+  {
+    "id": "6b487b1b-e783-47bc-9706-55f572913669",
+    "name": "French",
+    "native_name": "Français",
+    "code": "fr",
+    "is_active": true
+  },
+  {
+    "id": "22d6ab68-c1b9-481e-a571-0ca58ccba833",
+    "name": "Swahili",
+    "native_name": "Kiswahili",
+    "code": "sw",
+    "is_active": false
+  },
+  {
+    "id": "25681a6a-bd64-4424-a357-1564c3689c29",
+    "name": "Kinyarwanda",
+    "native_name": "Ikinyarwanda",
+    "code": "rw",
+    "is_active": false
+  }
+]

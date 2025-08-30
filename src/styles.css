@@ -1,1 +1,186 @@
 /* You can add global styles to this file, and also import other style files */
+@font-face {
+  font-family: "Nexa";
+  src: url("/assets/fonts/nexa/Nexa-Thin.woff2") format("woff2");
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Nexa";
+  src: url("/assets/fonts/nexa/Nexa-Light.woff2") format("woff2");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Nexa";
+  src: url("/assets/fonts/nexa/Nexa-Book.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Nexa";
+  src: url("/assets/fonts/nexa/Nexa-Regular.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Nexa";
+  src: url("/assets/fonts/nexa/Nexa-Bold.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Nexa";
+  src: url("/assets/fonts/nexa/Nexa-XBold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Nexa";
+  src: url("/assets/fonts/nexa/Nexa-Black.woff2") format("woff2");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Nexa";
+  src: url("/assets/fonts/nexa/Nexa-Heavy.woff2") format("woff2");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@import "tailwindcss";
+
+@theme {
+  --font-nexa: "Nexa", ui-sans-serif, system-ui, sans-serif;
+}
+
+@plugin "@tailwindcss/typography";
+@plugin "daisyui";
+
+@custom-variant dark (&:where([data-theme="afric-dark"], [data-theme="afric-dark"] *));
+
+@plugin "daisyui/theme" {
+  name: "afric-light";
+  default: true;
+  prefersdark: false;
+  color-scheme: light;
+
+  --color-primary: #5100ae;
+  --color-primary-content: #cedef8;
+
+  --color-secondary: #940194;
+  --color-secondary-content: #ecd2ea;
+
+  --color-accent: #5d4ed2;
+  --color-accent-content: #daddf9;
+
+  --color-neutral: #1f2937;
+  --color-neutral-content: #cdd0d3;
+
+  --color-base-100: #fafafa;
+  --color-base-200: #f0f0f0;
+  --color-base-300: #d9d9d9;
+  --color-base-content: #141516;
+
+  --color-success: #00a162;
+  --color-success-content: #000903;
+
+  --color-warning: #ef6d00;
+  --color-warning-content: #140400;
+
+  --color-error: #dc2626;
+  --color-error-content: #ffd9d4;
+
+  --color-info: #00c7ff;
+  --color-info-content: #000e16;
+}
+
+@plugin "daisyui/theme" {
+  name: "afric-dark";
+  default: false;
+  prefersdark: true;
+  color-scheme: dark;
+
+  --color-primary: #5100ae;
+  --color-primary-content: #cedef8;
+
+  --color-secondary: #940194;
+  --color-secondary-content: #ecd2ea;
+
+  --color-accent: #5d4ed2;
+  --color-accent-content: #daddf9;
+
+  --color-neutral: #1f2937;
+  --color-neutral-content: #cdd0d3;
+
+  --color-base-100: #121212;
+  --color-base-200: #212121;
+  --color-base-300: #2d2d2d;
+  --color-base-content: #cdcfd2;
+
+  --color-success: #00a162;
+  --color-success-content: #000903;
+
+  --color-warning: #ef6d00;
+  --color-warning-content: #140400;
+
+  --color-error: #dc2626;
+  --color-error-content: #ffd9d4;
+
+  --color-info: #00c7ff;
+  --color-info-content: #000e16;
+}
+
+/* .input,
+.select,
+.textarea {
+  @apply bg-base-200;
+} */
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: "Nexa", ui-sans-serif, system-ui, sans-serif;
+  padding-top: env(safe-area-inset-top);
+  padding-bottom: env(safe-area-inset-bottom);
+  padding-left: env(safe-area-inset-left);
+  padding-right: env(safe-area-inset-right);
+}
+
+.sticky-nav {
+  @apply sticky top-0 bg-neutral-100 dark:bg-base-300 py-2 z-50;
+}
+
+.sticky-footer {
+  @apply sticky bottom-0 mt-auto z-[500];
+}
+
+.drawer-side > .drawer-overlay {
+  @apply bg-black/90;
+}
+
+.btn-base-100 {
+  @apply bg-base-100;
+  @apply hover:bg-base-200;
+  @apply active:bg-base-300;
+  @apply text-base-content;
+  @apply border;
+  @apply border-base-200;
+}

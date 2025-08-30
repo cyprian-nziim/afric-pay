@@ -1,0 +1,55 @@
+<div
+  class="flex flex-col items-center text-center"
+  *transloco="let t; prefix: 'passkeysAuth'"
+>
+  <!-- Login State -->
+  @if (uiState() === "login") {
+    <ng-container>
+      <i
+        class="fa-light fa-fingerprint text-7xl mb-4 p-3 rounded-full bg-gradient-to-b from-primary to-secondary text-white"
+      ></i>
+      <h2 class="text-2xl font-bold mb-2">{{ t("login.title") }}</h2>
+      <p class="mb-6">{{ t("login.subtitle") }}</p>
+      <button
+        class="btn btn-primary w-full rounded-box"
+        (click)="submitEmail()"
+      >
+        {{ t("login.loginButton") }}
+      </button>
+    </ng-container>
+  }
+
+  <!-- Create Passkey State -->
+  @if (uiState() === "createPasskey") {
+    <ng-container>
+      <i
+        class="fa-light fa-fingerprint text-7xl mb-4 p-3 rounded-full bg-gradient-to-b from-primary to-secondary text-white"
+      ></i>
+      <h2 class="text-2xl font-bold mb-2">{{ t("create.title") }}</h2>
+      <p class="mb-6">{{ t("create.subtitle") }}</p>
+
+      <label class="w-full input input-lg rounded-box validator pr-0">
+        <i class="fa-light fa-envelope"></i>
+        <input
+          disabled
+          #email_input="ngModel"
+          [(ngModel)]="email"
+          type="email"
+          [placeholder]="t('create.emailPlaceholder')"
+          class="w-full"
+          required
+          pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+          autocomplete="off"
+        />
+      </label>
+
+      <button
+        class="btn btn-primary w-full rounded-box mt-2"
+        (click)="submitEmail()"
+        [disabled]="email_input.invalid"
+      >
+        {{ t("create.createButton") }}
+      </button>
+    </ng-container>
+  }
+</div>

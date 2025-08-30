@@ -1,0 +1,23 @@
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+
+import { SplashLoaderComponent } from './splash-loader.component';
+
+describe('SplashLoaderComponent', () => {
+  let component: SplashLoaderComponent;
+  let fixture: ComponentFixture<SplashLoaderComponent>;
+
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      imports: [SplashLoaderComponent]
+    })
+    .compileComponents();
+
+    fixture = TestBed.createComponent(SplashLoaderComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
+
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+});

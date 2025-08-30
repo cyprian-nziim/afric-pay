@@ -1,0 +1,45 @@
+{
+  "login": {
+    "title": "Connexion",
+    "subtitle": "Vous n'avez pas de compte AficPay ?",
+    "create_account": "Créer un compte",
+    "or": "OU",
+    "form": {
+      "email": {
+        "label": "Email",
+        "placeholder": "Entrez votre email",
+        "errors": {
+          "required": "L'email est requis",
+          "invalid": "Veuillez entrer un email valide"
+        }
+      },
+      "password": {
+        "label": "Mot de passe",
+        "placeholder": "Entrez votre mot de passe",
+        "errors": {
+          "required": "Le mot de passe est requis",
+          "minlength": "Le mot de passe doit contenir au moins 6 caractères"
+        }
+      },
+      "submit": "Se connecter",
+      "forgot_password": "Mot de passe oublié ?"
+    },
+    "errors": {
+      "invalid_credentials": "Email ou mot de passe incorrect",
+      "generic": "Échec de la connexion. Veuillez réessayer."
+    }
+  },
+  "passkeysAuth": {
+    "login": {
+      "title": "Missing value for 'passkeysAuth.login.title'",
+      "subtitle": "Missing value for 'passkeysAuth.login.subtitle'",
+      "loginButton": "Missing value for 'passkeysAuth.login.loginButton'"
+    },
+    "create": {
+      "title": "Missing value for 'passkeysAuth.create.title'",
+      "subtitle": "Missing value for 'passkeysAuth.create.subtitle'",
+      "emailPlaceholder": "Missing value for 'passkeysAuth.create.emailPlaceholder'",
+      "createButton": "Missing value for 'passkeysAuth.create.createButton'"
+    }
+  }
+}
