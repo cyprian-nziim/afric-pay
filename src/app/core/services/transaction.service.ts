@@ -1,11 +1,14 @@
 import { Injectable, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { Account } from './account.service';
-import { Transaction, TransactionStatus } from '../../transactions/models/transaction.model';
+import {
+  Transaction,
+  TransactionStatus,
+} from '../../transactions/models/transaction.model';
 import { TransactionsService } from './transactions.service';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class TransactionService {
   private router = inject(Router);
@@ -20,10 +23,10 @@ export class TransactionService {
    * @returns Promise that resolves when the transaction is completed
    */
   async sendMoney(
-    amount: number, 
-    recipientAccountNumber: string, 
-    senderAccount: Account, 
-    message: string = ''
+    amount: number,
+    recipientAccountNumber: string,
+    senderAccount: Account,
+    message: string = '',
   ): Promise<Transaction> {
     // Create transaction data
     const transactionData = {
@@ -33,19 +36,22 @@ export class TransactionService {
       senderAccountId: senderAccount.id,
       recipientAccountId: recipientAccountNumber,
       message,
-      date: new Date().toISOString()
+      status: 'pending',
+      date: new Date().toISOString(),
     };
 
     // Add transaction optimistically
-    const transaction = this.transactionsService.addOptimisticTransaction(transactionData);
+    await new Promise((resolve) => setTimeout(resolve, 2000));
+    const transaction =
+      this.transactionsService.addOptimisticTransaction(transactionData);
 
     try {
       // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      
+      new Promise((resolve) => setTimeout(resolve, 5000)).then(() => {
+        this.transactionsService.updateTransaction(transaction.id, 'posted');
+      });
+
       // Update transaction status to posted on success
-      this.transactionsService.updateTransaction(transaction.id, 'posted');
-      
       return transaction;
     } catch (error) {
       console.error('Failed to send money:', error);

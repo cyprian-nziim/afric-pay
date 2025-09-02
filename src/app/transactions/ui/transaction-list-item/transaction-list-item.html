@@ -25,10 +25,14 @@
         </div>
         <div class="ml-4 flex items-center">
           <span
-            class="text-base font-medium"
+            class="text-base font-semibold"
             [ngClass]="{
-              'text-green-600': transaction()?.amount! > 0,
-              'text-red-600': transaction()?.amount! < 0,
+              'text-neutral-800 dark:!text-neutral-200':
+                transaction()?.amount! > 0 &&
+                transaction()?.status === 'posted',
+              'text-red-600 dark:text-orange-400':
+                transaction()?.amount! > 0 &&
+                transaction()?.status === 'pending',
             }"
           >
             {{ transaction()?.amount! | number }} {{ transaction()?.currency }}

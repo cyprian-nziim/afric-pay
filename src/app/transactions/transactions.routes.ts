@@ -4,12 +4,12 @@ export const routes: Routes = [
   {
     path: '',
     redirectTo: 'list',
-    pathMatch: 'full'
+    pathMatch: 'full',
   },
   {
     path: 'list',
     loadComponent: () =>
-      import('./pages/list/list.page').then((m) => m.ListPage),
+      import('./pages/list/list.page').then((m) => m.TransactionsListPage),
   },
   {
     path: 'show/:id',
@@ -19,6 +19,6 @@ export const routes: Routes = [
   {
     path: '**',
     redirectTo: 'list',
-    pathMatch: 'full'
-  }
+    pathMatch: 'full',
+  },
 ];

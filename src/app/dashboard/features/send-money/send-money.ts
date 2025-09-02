@@ -4,7 +4,6 @@ import { Router } from '@angular/router';
 import { ModalComponent } from '../../../shared/ui/modal/modal';
 import { TranslocoModule } from '@jsverse/transloco';
 import { ModalService } from '../../../core/services/modal.service';
-import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import {
   Account,
@@ -14,7 +13,7 @@ import { TransactionService } from '../../../core/services/transaction.service';
 
 @Component({
   selector: 'afric-send-money',
-  imports: [CommonModule, TranslocoModule, ModalComponent, FormsModule, HttpClientModule],
+  imports: [CommonModule, TranslocoModule, ModalComponent, FormsModule],
   templateUrl: './send-money.html',
   styleUrl: './send-money.css',
 })
@@ -30,7 +29,7 @@ export class SendMoney {
   recipientAccountNumber = signal('');
   amount = signal<number | null>(null);
   message = signal('');
-  
+
   // UI state
   loading = signal(true);
   submitting = signal(false);
@@ -107,18 +106,17 @@ export class SendMoney {
         amount,
         recipientAccountNumber,
         selectedAccount,
-        this.message()
+        this.message(),
       );
-      
+
       // Reset form
       this.recipientAccountNumber.set('');
       this.amount.set(null);
       this.message.set('');
-      
+
       // Close the modal and navigate to transactions
       this.handleCloseModal();
       this.router.navigate(['/transactions']);
-      
     } catch (error) {
       console.error('Failed to send money:', error);
       // The error is already handled by the service with optimistic updates

@@ -1,20 +1,31 @@
 import { Injectable, inject, signal } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, Observable, catchError, firstValueFrom, of, tap } from 'rxjs';
-import { Transaction, TransactionListResponse, TransactionStatus } from '../../transactions/models/transaction.model';
+import {
+  BehaviorSubject,
+  Observable,
+  catchError,
+  firstValueFrom,
+  of,
+  tap,
+} from 'rxjs';
+import {
+  Transaction,
+  TransactionListResponse,
+  TransactionStatus,
+} from '../../transactions/models/transaction.model';
 import { RequestsService } from './requests.service';
 import { Account } from './account.service';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class TransactionsService {
   private http = inject(HttpClient);
   private requestsService = inject(RequestsService);
   private transactionsUrl = 'assets/data/transactions.json';
-  
+
   // Signal to hold the transactions state
-  private transactionsSignal = signal<Transaction[]>([]);
+  public transactions = signal<Transaction[]>([]);
   private isLoadingSignal = signal(true);
   readonly isLoading = this.isLoadingSignal.asReadonly();
 
@@ -24,25 +35,28 @@ export class TransactionsService {
    */
   getTransactions(): Observable<Transaction[]> {
     this.isLoadingSignal.set(true);
-    
+
     const requestFn = async () => {
       const response = await firstValueFrom(
-        this.http.get<TransactionListResponse>(this.transactionsUrl)
+        this.http.get<TransactionListResponse>(this.transactionsUrl),
       );
       return response.items || [];
     };
 
-    return new Observable<Transaction[]>(subscriber => {
-      this.requestsService.handleRequest(requestFn)
-        .then(transactions => {
-          this.transactionsSignal.set(transactions);
+    return new Observable<Transaction[]>((subscriber) => {
+      this.requestsService
+        .handleRequest(requestFn)
+        .then((transactions) => {
+          this.transactions.set(transactions);
           this.isLoadingSignal.set(false);
           subscriber.next(transactions);
           subscriber.complete();
         })
-        .catch(error => {
+        .catch((error) => {
           console.error('Error fetching transactions:', error);
-          subscriber.error(new Error('Failed to load transactions. Please try again later.'));
+          subscriber.error(
+            new Error('Failed to load transactions. Please try again later.'),
+          );
         });
     });
   }
@@ -52,15 +66,20 @@ export class TransactionsService {
    * @param transaction Transaction data without id, status, and timestamp
    * @returns The created transaction with generated ID and status
    */
-  addOptimisticTransaction(transactionData: Omit<Transaction, 'id' | 'status' | 'timestamp'>): Transaction {
+  addOptimisticTransaction(
+    transactionData: Omit<Transaction, 'id' | 'status' | 'timestamp'>,
+  ): Transaction {
     const newTransaction: Transaction = {
       ...transactionData,
       id: `tx_${Date.now()}`,
       status: 'pending',
-      timestamp: new Date().toISOString()
+      timestamp: new Date().toISOString(),
     };
 
-    this.transactionsSignal.update(transactions => [newTransaction, ...transactions]);
+    this.transactions.update((transactions) => [
+      newTransaction,
+      ...transactions,
+    ]);
     return newTransaction;
   }
 
@@ -70,11 +89,15 @@ export class TransactionsService {
    * @param status New status
    * @param updates Optional additional fields to update
    */
-  updateTransaction(transactionId: string, status: TransactionStatus, updates: Partial<Transaction> = {}) {
-    this.transactionsSignal.update(transactions => 
-      transactions.map(tx => 
-        tx.id === transactionId ? { ...tx, status, ...updates } : tx
-      )
+  updateTransaction(
+    transactionId: string,
+    status: TransactionStatus,
+    updates: Partial<Transaction> = {},
+  ) {
+    this.transactions.update((transactions) =>
+      transactions.map((tx) =>
+        tx.id === transactionId ? { ...tx, status, ...updates } : tx,
+      ),
     );
   }
 
@@ -84,7 +107,7 @@ export class TransactionsService {
    * @returns Transaction or undefined if not found
    */
   getTransaction(id: string): Transaction | undefined {
-    return this.transactionsSignal().find(tx => tx.id === id);
+    return this.transactions().find((tx) => tx.id === id);
   }
 
   /**
@@ -95,20 +118,25 @@ export class TransactionsService {
   getTransactionById(id: string): Observable<Transaction | undefined> {
     const requestFn = async () => {
       const response = await firstValueFrom(
-        this.http.get<TransactionListResponse>(this.transactionsUrl)
+        this.http.get<TransactionListResponse>(this.transactionsUrl),
       );
-      return response.items.find(tx => tx.id === id);
+      return response.items.find((tx) => tx.id === id);
     };
 
-    return new Observable<Transaction | undefined>(subscriber => {
-      this.requestsService.handleRequest(requestFn)
-        .then(transaction => {
+    return new Observable<Transaction | undefined>((subscriber) => {
+      this.requestsService
+        .handleRequest(requestFn)
+        .then((transaction) => {
           subscriber.next(transaction);
           subscriber.complete();
         })
-        .catch(error => {
+        .catch((error) => {
           console.error(`Error fetching transaction with id ${id}:`, error);
-          subscriber.error(new Error('Failed to load transaction details. Please try again later.'));
+          subscriber.error(
+            new Error(
+              'Failed to load transaction details. Please try again later.',
+            ),
+          );
         });
     });
   }
